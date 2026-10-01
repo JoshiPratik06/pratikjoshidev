@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+const initializePortfolio = () => {
   if (window.lucide) window.lucide.createIcons();
 
   const navbar = document.querySelector('.navbar');
@@ -122,5 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.14 });
 
-  revealItems.forEach(item => observer.observe(item));
-});
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  revealItems.forEach(item => {
+    observer.observe(item);
+    const bounds = item.getBoundingClientRect();
+    if (bounds.top < viewportHeight && bounds.bottom > 0) {
+      item.classList.add('visible');
+    }
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializePortfolio, { once: true });
+} else {
+  initializePortfolio();
+}
