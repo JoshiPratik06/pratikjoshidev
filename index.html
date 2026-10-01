@@ -3,80 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Pratik Joshi, Front-End Developer.">
+    <meta name="description" content="Portfolio of Pratik Joshi, Front-End Developer specializing in React.js, modern JavaScript, Tailwind CSS, and AI-powered interfaces.">
+    <meta name="keywords" content="Pratik Joshi, Front-End Developer, React, Tailwind CSS, JavaScript, Web Developer, Pune, Portfolio">
+    <meta name="author" content="Pratik Joshi">
     <meta name="theme-color" content="#101411">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pratik Joshi | Front-End Developer">
+    <meta property="og:description" content="Front-End Developer building responsive, accessible, and high-performance web applications using React.js, Tailwind CSS, and modern web tools.">
+    <meta property="og:image" content="photo.png">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pratik Joshi | Front-End Developer">
+    <meta name="twitter:description" content="Front-End Developer building responsive, accessible, and high-performance web applications.">
+    <meta name="twitter:image" content="photo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23101411'/><text x='50' y='64' font-family='monospace' font-weight='800' font-size='42' fill='%23f6f4ef' text-anchor='middle'>PJ<tspan fill='%23d8ef61'>.</tspan></text></svg>">
+    
     <title>Pratik Joshi | Front-End Developer</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="video.css">
+    <link rel="stylesheet" href="style.css?v=6.0">
+    
     <script src="https://unpkg.com/lucide@latest" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=6.0" defer></script>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-container">
             <a href="#home" class="nav-logo" aria-label="Pratik Joshi, home">PJ<span>.</span></a>
+            
             <div class="nav-menu" id="nav-menu">
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
                 <a href="#about" class="nav-link">About</a>
             </div>
-            <a href="#contact" class="nav-contact">Let's talk <i data-lucide="arrow-up-right"></i></a>
-            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span></button>
+            
+            <div class="nav-actions">
+                <a href="#contact" class="nav-contact">Let's talk <i data-lucide="arrow-up-right"></i></a>
+                <button class="hamburger" id="hamburger-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
     <main>
+        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-grid" aria-hidden="true"></div>
             <div class="hero-content">
                 <div class="hero-copy reveal">
                     <p class="eyebrow"><span></span> Available for opportunities</p>
                     <h1>I build web experiences that <em>feel effortless.</em></h1>
-                    <p class="hero-subtitle">I'm Pratik Joshi, a Front-End Developer with 1.2 years of hands-on experience creating responsive, user-friendly, and visually engaging websites using HTML5, CSS3, JavaScript, React.js, Preact.js, Tailwind CSS, Bootstrap, and WordPress.</p>
+                    <p class="hero-subtitle">I'm Pratik Joshi, a Front-End Developer with 1.2 years of hands-on experience creating responsive, user-friendly, and visually engaging web applications using React.js, modern JavaScript (ES6+), Tailwind CSS, Bootstrap, and AI tool integrations.</p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">Explore my work <i data-lucide="arrow-down-right"></i></a>
-                        <a href="Pratik%20Joshi.pdf" target="_blank" class="text-link">Resume <i data-lucide="download"></i></a>
+                        <a href="Pratik%20Joshi.pdf" target="_blank" class="btn btn-outline">Resume <i data-lucide="download"></i></a>
+                        <a href="https://wa.me/918483903598?text=Hi%20Pratik,%20I%20saw%20your%20portfolio!" target="_blank" class="text-link" aria-label="Chat with Pratik on WhatsApp">WhatsApp <i data-lucide="message-square"></i></a>
                     </div>
                 </div>
                 <div class="hero-portrait reveal reveal-delay">
-                    <div class="portrait-frame"><img src="PP.png" alt="Portrait of Pratik Joshi"></div>
-                    <div class="portrait-note"><span>Based in</span><strong>Pune, Maharashtra</strong></div>
+                    <div class="portrait-frame">
+                        <img src="PP.png" alt="Portrait of Pratik Joshi, Front-End Developer">
+                    </div>
+                    <div class="portrait-note">
+                        <span>Based in</span>
+                        <strong>Pune, Maharashtra</strong>
+                    </div>
                     <div class="portrait-mark">01</div>
                 </div>
             </div>
-            <div class="hero-bottom"><p>Scroll to discover</p><span></span><p>Full Stack Developer</p></div>
+            <div class="hero-bottom">
+                <p>Scroll to discover</p>
+                <span></span>
+                <p>Front-End Developer</p>
+            </div>
         </section>
 
+        <!-- Selected Projects Section -->
         <section id="projects" class="projects section">
             <div class="container">
                 <div class="section-intro reveal">
                     <p class="eyebrow"><span></span> Selected work</p>
-                    <div><h2>Projects with purpose.</h2><p>Thoughtful interfaces, practical interactions, and an eye for how a product feels in use.</p></div>
+                    <div>
+                        <h2>Projects with purpose.</h2>
+                        <p>Thoughtful interfaces, practical interactions, and an eye for how a product feels in use.</p>
+                    </div>
                 </div>
+
+                <!-- Project 01: Tandoori Tales -->
                 <article class="project-card reveal">
-                    <a class="project-image project-image--tandoori" href="https://pratik-restaurants.vercel.app/" target="_blank" aria-label="Open Tandoori Tales live demo"><img src="Tandoori Tales.png" alt="Tandoori Tales restaurant website preview"><span class="image-link"><i data-lucide="arrow-up-right"></i></span></a>
-                    <div class="project-content"><p class="project-index">01 / 02</p><div class="project-title-row"><h3>Tandoori Tales</h3><span>2025</span></div><p>A responsive restaurant web application with a modern interface, menu filtering, cart functionality, and persistent order state using React.js and Tailwind CSS.</p><div class="project-meta"><span>React.js</span><span>Tailwind CSS</span><span>Vite</span><span>JavaScript</span><span>LocalStorage</span></div><div class="project-links"><a href="https://pratik-restaurants.vercel.app/" target="_blank">Live demo <i data-lucide="arrow-up-right"></i></a><a href="https://github.com/JoshiPratik06/PratikRestaurants" target="_blank">Source <i data-lucide="github"></i></a></div></div>
+                    <a class="project-image project-image--tandoori" href="https://pratik-restaurants.vercel.app/" target="_blank" aria-label="Open Tandoori Tales live demo">
+                        <img src="Tandoori%20Tales.png" alt="Tandoori Tales restaurant website preview" loading="lazy">
+                        <span class="image-link"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <div class="project-content">
+                        <p class="project-index">01 / 02</p>
+                        <div class="project-title-row">
+                            <h3>Tandoori Tales</h3>
+                            <span>2025</span>
+                        </div>
+                        <p>A responsive restaurant web application featuring an intuitive menu ordering system, category filtering, cart state management, and real-time total calculation.</p>
+                        <div class="project-meta">
+                            <span>React.js</span>
+                            <span>Tailwind CSS</span>
+                            <span>Vite</span>
+                            <span>JavaScript</span>
+                            <span>LocalStorage</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://pratik-restaurants.vercel.app/" target="_blank">Live demo <i data-lucide="arrow-up-right"></i></a>
+                            <a href="https://github.com/JoshiPratik06/PratikRestaurants" target="_blank">Source <i data-lucide="github"></i></a>
+                        </div>
+
+                        <!-- Technical Highlights Accordion -->
+                        <div class="project-details-toggle">
+                            <button class="details-btn" id="project-details-tandoori-toggle" type="button" aria-expanded="false" aria-controls="project-details-tandoori">
+                                <span>Architecture & Technical Highlights</span>
+                                <i data-lucide="chevron-down"></i>
+                            </button>
+                            <div class="details-body" id="project-details-tandoori" role="region" aria-labelledby="project-details-tandoori-toggle" aria-hidden="true" inert>
+                                <div class="details-inner">
+                                    <ul class="details-list">
+                                        <li><strong>Category Filtering:</strong> Instant filter for Veg, Non-Veg, and Starter food items without page reloads.</li>
+                                        <li><strong>Dynamic Shopping Cart:</strong> Complete cart flow with quantity controls, item removal, and automatic tax/total calculation.</li>
+                                        <li><strong>Data Persistence:</strong> Synchronized with browser LocalStorage to maintain order state across sessions.</li>
+                                        <li><strong>Responsive Layout:</strong> Tailored for smartphones, tablets, and desktop displays with smooth responsive transitions.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </article>
+
+                <!-- Project 02: JoshiWada Palace -->
                 <article class="project-card project-card-reverse reveal">
-                    <a class="project-image project-image--game" href="https://rajwada-palace.vercel.app/" target="_blank" aria-label="Open JoshiWada Palace live demo"><img src="joshiwada-palace.png" alt="JoshiWada Palace heritage hotel website preview"><span class="image-link"><i data-lucide="arrow-up-right"></i></span></a>
-                    <div class="project-content"><p class="project-index">02 / 02</p><div class="project-title-row"><h3>JoshiWada Palace</h3><span>2025</span></div><p>A luxury heritage hotel and restaurant website with an interactive room booking flow, multilingual support, and a polished responsive experience for visitors.</p><div class="project-meta"><span>React 19</span><span>Vite</span><span>Tailwind CSS</span><span>Framer Motion</span><span>JavaScript</span></div><div class="project-links"><a href="https://rajwada-palace.vercel.app/" target="_blank">Live demo <i data-lucide="arrow-up-right"></i></a><a href="https://github.com/JoshiPratik06/rajwada-palace" target="_blank">Source <i data-lucide="github"></i></a></div></div>
+                    <a class="project-image project-image--game" href="https://rajwada-palace.vercel.app/" target="_blank" aria-label="Open JoshiWada Palace live demo">
+                        <img src="joshiwada-palace.png" alt="JoshiWada Palace heritage hotel website preview" loading="lazy">
+                        <span class="image-link"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <div class="project-content">
+                        <p class="project-index">02 / 02</p>
+                        <div class="project-title-row">
+                            <h3>JoshiWada Palace</h3>
+                            <span>2025</span>
+                        </div>
+                        <p>A luxury heritage hotel and restaurant web platform with interactive room bookings, dining ordering flow, multilingual support, and fluid micro-animations.</p>
+                        <div class="project-meta">
+                            <span>React 19</span>
+                            <span>Vite</span>
+                            <span>Tailwind CSS</span>
+                            <span>Framer Motion</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://rajwada-palace.vercel.app/" target="_blank">Live demo <i data-lucide="arrow-up-right"></i></a>
+                            <a href="https://github.com/JoshiPratik06/rajwada-palace" target="_blank">Source <i data-lucide="github"></i></a>
+                        </div>
+
+                        <!-- Technical Highlights Accordion -->
+                        <div class="project-details-toggle">
+                            <button class="details-btn" id="project-details-palace-toggle" type="button" aria-expanded="false" aria-controls="project-details-palace">
+                                <span>Architecture & Technical Highlights</span>
+                                <i data-lucide="chevron-down"></i>
+                            </button>
+                            <div class="details-body" id="project-details-palace" role="region" aria-labelledby="project-details-palace-toggle" aria-hidden="true" inert>
+                                <div class="details-inner">
+                                    <ul class="details-list">
+                                        <li><strong>Interactive Room Booking:</strong> Comprehensive room type selection, date simulation, and instant booking summaries.</li>
+                                        <li><strong>Trilingual Support:</strong> Real-time language switching between English, Hindi, and Marathi.</li>
+                                        <li><strong>Framer Motion Transitions:</strong> Fluid scroll interactions, luxury typography pacing, and smooth page dynamics.</li>
+                                        <li><strong>100% Client-Side Engine:</strong> Zero-backend architecture with browser state handling for bookings and dining carts.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </article>
+
+                <!-- Live GitHub Spotlight -->
+                <div class="github-spotlight reveal">
+                    <div class="github-header">
+                        <div>
+                            <p class="eyebrow"><span></span> Code Repositories</p>
+                            <h3>Recent GitHub Activity</h3>
+                        </div>
+                        <a href="https://github.com/JoshiPratik06" target="_blank" class="text-link">Explore GitHub profile <i data-lucide="arrow-up-right"></i></a>
+                    </div>
+                    <div id="github-repos-grid" class="github-grid">
+                        <article class="repo-card">
+                            <div>
+                                <div class="repo-top">
+                                    <i data-lucide="git-fork"></i>
+                                    <a href="https://github.com/JoshiPratik06/rajwada-palace" target="_blank" aria-label="View rajwada-palace repository"><i data-lucide="arrow-up-right"></i></a>
+                                </div>
+                                <h4>rajwada-palace</h4>
+                                <p>Luxury Heritage Hotel and Restaurant website built with React 19, Tailwind CSS, Vite, and Framer Motion.</p>
+                            </div>
+                            <div class="repo-meta">
+                                <span><span class="repo-lang-dot"></span>JavaScript</span>
+                                <span><i data-lucide="star"></i> Public</span>
+                            </div>
+                        </article>
+                        <article class="repo-card">
+                            <div>
+                                <div class="repo-top">
+                                    <i data-lucide="git-fork"></i>
+                                    <a href="https://github.com/JoshiPratik06/PratikRestaurants" target="_blank" aria-label="View PratikRestaurants repository"><i data-lucide="arrow-up-right"></i></a>
+                                </div>
+                                <h4>PratikRestaurants</h4>
+                                <p>Responsive restaurant web application with interactive cart, filtering, and localStorage integration.</p>
+                            </div>
+                            <div class="repo-meta">
+                                <span><span class="repo-lang-dot"></span>JavaScript</span>
+                                <span><i data-lucide="star"></i> Public</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- Technical Skills Section -->
         <section id="skills" class="skills section">
-            <div class="container"><div class="section-intro reveal"><p class="eyebrow"><span></span> Toolkit</p><div><h2>Built to move from idea to implementation.</h2><p>Technologies I use to create responsive and engaging digital experiences.</p></div></div>
-                <div class="skills-grid"><div class="skill-card reveal"><span class="skill-number">01</span><i data-lucide="code-2"></i><h3>HTML5</h3><p>Semantic, accessible structure for modern web content.</p></div><div class="skill-card reveal"><span class="skill-number">02</span><i data-lucide="palette"></i><h3>CSS3</h3><p>Responsive styling, design systems, and polished interfaces.</p></div><div class="skill-card reveal"><span class="skill-number">03</span><i data-lucide="braces"></i><h3>JavaScript</h3><p>Interactive UI logic and dynamic client-side behavior.</p></div><div class="skill-card reveal"><span class="skill-number">04</span><i data-lucide="atom"></i><h3>React.js</h3><p>Reusable components and scalable frontend architecture.</p></div><div class="skill-card reveal"><span class="skill-number">05</span><i data-lucide="wand-2"></i><h3>Tailwind CSS</h3><p>Utility-first styling for modern, consistent layouts.</p></div><div class="skill-card reveal"><span class="skill-number">06</span><i data-lucide="layout-template"></i><h3>WordPress</h3><p>Website content updates, page layouts, and CMS maintenance.</p></div></div>
+            <div class="container">
+                <div class="section-intro reveal">
+                    <p class="eyebrow"><span></span> Toolkit</p>
+                    <div>
+                        <h2>Built to move from idea to implementation.</h2>
+                        <p>Modern frontend libraries, AI-assisted development tools, and engineering workflows I leverage daily.</p>
+                    </div>
+                </div>
+
+                <!-- Skill Filter Tabs -->
+                <div class="skills-filter reveal">
+                    <button class="filter-btn active" type="button" data-filter="all">All Toolkit</button>
+                    <button class="filter-btn" type="button" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" type="button" data-filter="ai">AI & GenAI</button>
+                    <button class="filter-btn" type="button" data-filter="tools">Tools & CMS</button>
+                </div>
+
+                <!-- Skills Grid -->
+                <div class="skills-grid">
+                    <!-- Frontend -->
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">01</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="code-2"></i>
+                        <h3>HTML5</h3>
+                        <p>Semantic markup, accessible tree structure, and modern standards-compliant elements.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">02</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="palette"></i>
+                        <h3>CSS3</h3>
+                        <p>Responsive design, custom properties, Flexbox/Grid, and fluid typography systems.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">03</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="braces"></i>
+                        <h3>JavaScript (ES6+)</h3>
+                        <p>DOM APIs, asynchronous async/await pipelines, array methods, and dynamic client logic.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">04</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="atom"></i>
+                        <h3>React.js & React 19</h3>
+                        <p>Reusable components, custom hooks, reactive state workflows, and modern SPA architecture.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">05</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="wand-2"></i>
+                        <h3>Tailwind CSS</h3>
+                        <p>Utility-first styling, rapid design system prototyping, and clean, responsive layouts.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="frontend">
+                        <div class="skill-card-header">
+                            <span class="skill-number">06</span>
+                            <span class="skill-category-tag">Frontend</span>
+                        </div>
+                        <i data-lucide="sparkles"></i>
+                        <h3>Framer Motion</h3>
+                        <p>Smooth layout transitions, physics-based UI gestures, and interactive micro-animations.</p>
+                    </div>
+
+                    <!-- AI & GenAI -->
+                    <div class="skill-card reveal" data-category="ai">
+                        <div class="skill-card-header">
+                            <span class="skill-number">07</span>
+                            <span class="skill-category-tag">AI & GenAI</span>
+                        </div>
+                        <i data-lucide="bot"></i>
+                        <h3>AI API Integration</h3>
+                        <p>Integrating OpenAI and Anthropic APIs into web frontends for dynamic, generative features.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="ai">
+                        <div class="skill-card-header">
+                            <span class="skill-number">08</span>
+                            <span class="skill-category-tag">AI & GenAI</span>
+                        </div>
+                        <i data-lucide="sparkles"></i>
+                        <h3>Prompt Engineering</h3>
+                        <p>Designing structured system instructions, role prompts, and context wrappers for web apps.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="ai">
+                        <div class="skill-card-header">
+                            <span class="skill-number">09</span>
+                            <span class="skill-category-tag">AI & GenAI</span>
+                        </div>
+                        <i data-lucide="wand-2"></i>
+                        <h3>AI Dev Acceleration</h3>
+                        <p>Leveraging Claude, ChatGPT, Genspark, and Antigravity AI for fast debugging and workflow boosts.</p>
+                    </div>
+
+                    <!-- Tools & CMS -->
+                    <div class="skill-card reveal" data-category="tools">
+                        <div class="skill-card-header">
+                            <span class="skill-number">10</span>
+                            <span class="skill-category-tag">CMS & Tools</span>
+                        </div>
+                        <i data-lucide="layout-template"></i>
+                        <h3>WordPress</h3>
+                        <p>Website maintenance, page builder customization, content updates, and CMS management.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="tools">
+                        <div class="skill-card-header">
+                            <span class="skill-number">11</span>
+                            <span class="skill-category-tag">CMS & Tools</span>
+                        </div>
+                        <i data-lucide="git-fork"></i>
+                        <h3>Git & GitHub</h3>
+                        <p>Version control, branch isolation, code reviews, pull requests, and collaborative pipelines.</p>
+                    </div>
+
+                    <div class="skill-card reveal" data-category="tools">
+                        <div class="skill-card-header">
+                            <span class="skill-number">12</span>
+                            <span class="skill-category-tag">CMS & Tools</span>
+                        </div>
+                        <i data-lucide="external-link"></i>
+                        <h3>Vite & Vercel</h3>
+                        <p>Modern build tooling, lightning-fast HMR, automated continuous deployment, and hosting.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="about section"><div class="container about-layout"><div class="about-copy reveal"><p class="eyebrow"><span></span> A little about me</p><h2>Curious by default. User-focused by practice.</h2><p>I'm a Front-End Developer with a strong interest in building responsive, user-friendly interfaces that balance visual quality with real-world usability. I enjoy creating clean layouts, smooth interactions, and experiences that feel intuitive across devices.</p><a href="#contact" class="text-link">Start a conversation <i data-lucide="arrow-up-right"></i></a></div><div class="about-details reveal"><div class="detail-row"><i data-lucide="graduation-cap"></i><div><p>Education</p><h3>Bachelor of Science (Information Technology)</h3><span>Sabarmati University, Ahmedabad, 2021-2024</span></div></div><div class="detail-row"><i data-lucide="briefcase-business"></i><div><p>Experience</p><h3>Front-End Developer</h3><span>Alpha Developer Team LLP, Oct 2024 - Nov 2025</span></div></div></div></div></section>
+        <!-- Professional Experience & Education Section -->
+        <section id="experience" class="experience-section section">
+            <div class="container">
+                <div class="section-intro reveal">
+                    <p class="eyebrow"><span></span> Background</p>
+                    <div>
+                        <h2>Experience & Education.</h2>
+                        <p>1.2 years of professional agency experience paired with a formal degree in Information Technology.</p>
+                    </div>
+                </div>
 
-        <section id="contact" class="contact section"><div class="container contact-wrap reveal"><p class="eyebrow"><span></span> Get in touch</p><h2>Looking for a front-end developer<br>who can build with purpose?</h2><p class="contact-description">I’m open to full-time front-end developer opportunities and excited to contribute to a product-focused team building useful, polished web experiences.</p><a class="contact-email" href="mailto:pratikjoshi0068@gmail.com">pratikjoshi0068@gmail.com <i data-lucide="arrow-up-right"></i></a><div class="contact-footer"><p>Available for full-time opportunities in Pune, Maharashtra.</p><div><a href="https://github.com/JoshiPratik06" target="_blank">GitHub</a><a href="https://www.linkedin.com/in/pratik-joshi-09b52a325/" target="_blank">LinkedIn</a></div></div></div></section>
+                <div class="experience-layout">
+                    <!-- Work Timeline -->
+                    <div class="experience-block reveal">
+                        <h3><i data-lucide="briefcase-business"></i> Professional Experience</h3>
+                        <div class="timeline">
+                            <article class="timeline-item">
+                                <div class="timeline-meta">
+                                    <h4 class="timeline-role">Front-End Developer</h4>
+                                    <span class="timeline-period">Oct 2024 – Nov 2025</span>
+                                </div>
+                                <div class="timeline-company">
+                                    <span>Alpha Developer Team LLP</span> • <span>Pune, Maharashtra</span>
+                                </div>
+                                <ul class="timeline-duties">
+                                    <li>Developed responsive and user-friendly web interfaces using HTML5, CSS3, and JavaScript across desktop, tablet, and mobile devices.</li>
+                                    <li>Worked on an active job portal, managing dynamic product information, real-time pricing, stock availability, and website content updates.</li>
+                                    <li>Built interactive UI components and frontend functionality to elevate usability, visual consistency, and overall retention.</li>
+                                    <li>Customized and maintained WordPress website pages, designing responsive layouts and handling CMS updates.</li>
+                                    <li>Utilized Git and GitHub for source-code management, version control, and collaborative sprint delivery with team members.</li>
+                                </ul>
+                                <div class="timeline-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>React.js</span>
+                                    <span>WordPress</span>
+                                    <span>Git</span>
+                                    <span>Responsive UI</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="education-block reveal reveal-delay">
+                        <h3><i data-lucide="graduation-cap"></i> Education</h3>
+                        <div class="edu-cards">
+                            <div class="edu-card">
+                                <span class="edu-period">2021 – 2024</span>
+                                <h4>Bachelor of Science (Information Technology)</h4>
+                                <p>Sabarmati University, Ahmedabad, Gujarat</p>
+                            </div>
+                            <div class="edu-card">
+                                <span class="edu-period">2020 – 2021</span>
+                                <h4>Higher Secondary Education (XII)</h4>
+                                <p>Shri Ganesh Arts, Commerce & Science College, Maharashtra State Board</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="container about-layout">
+                <div class="about-copy reveal">
+                    <p class="eyebrow"><span></span> A little about me</p>
+                    <h2>Curious by default.<br>User-focused by practice.</h2>
+                    <p>I'm a Front-End Developer with a strong interest in building responsive, user-friendly interfaces that balance visual polish with real-world performance. I enjoy turning complex requirements into clean layouts, smooth micro-interactions, and accessible web experiences across all devices.</p>
+                    <p>When not coding, I experiment with AI developer tools, generative interfaces, and graphic design to stay at the cutting edge of digital product creation.</p>
+                    <a href="#contact" class="text-link">Start a conversation <i data-lucide="arrow-up-right"></i></a>
+                </div>
+
+                <div class="about-details reveal">
+                    <div class="detail-row">
+                        <i data-lucide="map-pin"></i>
+                        <div>
+                            <p>Location</p>
+                            <h3>Pune, Maharashtra</h3>
+                            <span>Open to on-site & remote full-time roles</span>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="languages"></i>
+                        <div>
+                            <p>Languages</p>
+                            <h3>English, Hindi, Marathi</h3>
+                            <span>Fluent communication across teams</span>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <i data-lucide="code-2"></i>
+                        <div>
+                            <p>Primary Stack</p>
+                            <h3>React.js, Tailwind CSS, JavaScript</h3>
+                            <span>Clean, maintainable, modern frontend engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="container">
+                <div class="contact-wrap reveal">
+                    <p class="eyebrow"><span></span> Get in touch</p>
+                    <h2>Looking for a front-end developer<br>who builds with purpose?</h2>
+
+                    <div class="contact-layout">
+                        <!-- Left: Direct Contact Information -->
+                        <div class="contact-direct">
+                            <p class="contact-description">I’m actively looking for full-time front-end developer opportunities and ready to bring value to a product-focused team building polished digital products.</p>
+                            
+                            <div class="contact-email-row">
+                                <a class="contact-email" href="mailto:pratikjoshi0068@gmail.com">
+                                    pratikjoshi0068@gmail.com <i data-lucide="arrow-up-right"></i>
+                                </a>
+                                <button class="copy-btn" id="copy-email-btn" type="button" aria-label="Copy email address to clipboard">
+                                    <i data-lucide="copy"></i>
+                                    <span class="copy-text">Copy</span>
+                                    <span class="copy-toast" id="copy-toast">Copied to clipboard!</span>
+                                </button>
+                            </div>
+
+                            <div class="contact-whatsapp-row">
+                                <a class="whatsapp-link" href="https://wa.me/918483903598?text=Hello%20Pratik,%20I%20saw%20your%20portfolio!" target="_blank" aria-label="Chat on WhatsApp">
+                                    <i data-lucide="phone"></i>
+                                    <span>+91 84839 03598 (WhatsApp)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Footer Links -->
+                    <div class="contact-footer">
+                        <p>Available for full-time opportunities in Pune, Maharashtra.</p>
+                        <div>
+                            <a href="https://github.com/JoshiPratik06" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://www.linkedin.com/in/pratik-joshi-09b52a325/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                            <a href="https://wa.me/918483903598" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                            <a href="Pratik%20Joshi.pdf" target="_blank">Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="footer"><div class="container"><p>© 2026 Pratik Joshi</p><p>Designed & built By Pratik Joshi.</p></div></footer>
+
+    <!-- Bottom Page Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Pratik Joshi</p>
+            <p>Designed & Built by Pratik Joshi.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Scroll back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
 </body>
 </html>

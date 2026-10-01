@@ -1,117 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
   if (window.lucide) window.lucide.createIcons();
-  const thumbnailFiles = [
-    'Thumnail/01.png',
-    'Thumnail/02.png',
-    'Thumnail/03.png',
-    'Thumnail/04.png',
-    'Thumnail/05.png',
-    'Thumnail/06.png',
-    'Thumnail/07.png',
-    'Thumnail/08.png'
-  ];
 
-  // Helper: encode a path but keep slashes
-  const encodePath = (p) => p.split('/').map(encodeURIComponent).join('/');
+  const navbar = document.querySelector('.navbar');
+  const navMenu = document.getElementById('nav-menu');
+  const hamburger = document.getElementById('hamburger-btn');
 
-  // Preload images and collect valid sources
-  const preloaded = [];
-  thumbnailFiles.forEach(file => {
-    const img = new Image();
-    img.src = encodePath(file);
-    img.onload = () => preloaded.push(img.src);
-    img.onerror = () => console.warn('Failed to preload thumbnail:', file);
-  });
-  // Rotate thumbnails in the small showcase (if present)
-  const thumbnailShowcaseImage = document.getElementById('thumbnail-showcase-image');
-  const showcaseImages = thumbnailFiles.map(file => encodePath(file));
+  const closeMenu = () => {
+    if (!navMenu || !hamburger) return;
+    navMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+  };
 
-  if (thumbnailShowcaseImage && showcaseImages.length) {
-    let idx = 0;
-    const startSrc = preloaded[0] || showcaseImages[0];
-    thumbnailShowcaseImage.src = startSrc;
-    thumbnailShowcaseImage.alt = `Featured YouTube thumbnail 1`;
-    thumbnailShowcaseImage.style.opacity = 1;
+  if (navbar) {
+    let previousScrollY = window.scrollY;
+    let ticking = false;
 
-    thumbnailShowcaseImage.addEventListener('error', () => {
-      console.warn('Showcase image failed:', thumbnailShowcaseImage.src);
-      idx = (idx + 1) % showcaseImages.length;
-      thumbnailShowcaseImage.src = showcaseImages[idx];
-      thumbnailShowcaseImage.alt = `Featured YouTube thumbnail ${idx + 1}`;
+    const updateNavbar = () => {
+      const currentScrollY = Math.max(0, window.scrollY);
+      navbar.classList.toggle('navbar-scrolled', currentScrollY > 8);
+
+      if (currentScrollY <= 8) {
+        navbar.classList.remove('navbar-hidden');
+      } else if (currentScrollY > previousScrollY + 4) {
+        navbar.classList.add('navbar-hidden');
+        closeMenu();
+      } else if (currentScrollY < previousScrollY - 4) {
+        navbar.classList.remove('navbar-hidden');
+      }
+
+      previousScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  if (navMenu && hamburger) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      navMenu.classList.toggle('open', !isOpen);
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
     });
 
-    setInterval(() => {
-      const nextIndex = (idx + 1) % showcaseImages.length;
-      thumbnailShowcaseImage.style.opacity = 0;
-      setTimeout(() => {
-        idx = nextIndex;
-        thumbnailShowcaseImage.src = showcaseImages[idx];
-        thumbnailShowcaseImage.alt = `Featured YouTube thumbnail ${idx + 1}`;
-        thumbnailShowcaseImage.style.opacity = 1;
-      }, 450);
-    }, 3000);
-  }
-
-  const galleryGrid = document.getElementById('gallery-grid');
-  const lightboxOverlay = document.getElementById('lightbox-overlay');
-  const lightboxImage = document.getElementById('lightbox-image');
-  const lightboxClose = document.getElementById('lightbox-close');
-
-  const openLightbox = (src, alt) => {
-    if (!lightboxOverlay || !lightboxImage) return;
-    lightboxImage.src = src;
-    lightboxImage.alt = alt;
-    lightboxOverlay.classList.add('active');
-    lightboxOverlay.setAttribute('aria-hidden', 'false');
-  };
-
-  const closeLightbox = () => {
-    if (!lightboxOverlay || !lightboxImage) return;
-    lightboxOverlay.classList.remove('active');
-    lightboxOverlay.setAttribute('aria-hidden', 'true');
-    lightboxImage.src = '';
-  };
-
-  if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
-  }
-
-  if (lightboxOverlay) {
-    lightboxOverlay.addEventListener('click', (event) => {
-      if (event.target === lightboxOverlay) closeLightbox();
+    navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeMenu();
     });
   }
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeLightbox();
-  });
+  document.querySelectorAll('.details-btn[aria-controls]').forEach(button => {
+    const panelId = button.getAttribute('aria-controls');
+    const panel = panelId ? document.getElementById(panelId) : null;
+    if (!panel) return;
 
-  if (galleryGrid) {
-    galleryGrid.innerHTML = '';
-    thumbnailFiles.forEach((file, index) => {
-      const src = encodePath(file);
-      const card = document.createElement('article');
-      card.className = 'gallery-card';
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      const shouldExpand = !isExpanded;
 
-      const imgEl = document.createElement('img');
-      imgEl.src = src;
-      imgEl.alt = `Thumbnail ${index + 1}`;
-      imgEl.addEventListener('error', () => {
-        console.warn('Gallery image failed to load:', src);
-        imgEl.src = 'photo.png';
+      panel.getAnimations().forEach(animation => animation.cancel());
+      const currentHeight = panel.getBoundingClientRect().height;
+
+      button.setAttribute('aria-expanded', String(shouldExpand));
+
+      if (shouldExpand) {
+        panel.inert = false;
+        panel.setAttribute('aria-hidden', 'false');
+      } else {
+        panel.inert = true;
+      }
+
+      const targetHeight = shouldExpand ? panel.scrollHeight : 0;
+      const animation = panel.animate([
+        {
+          height: `${currentHeight}px`,
+          marginTop: currentHeight ? '14px' : '0px',
+          opacity: currentHeight ? 1 : 0,
+          transform: currentHeight ? 'translateY(0)' : 'translateY(-8px)'
+        },
+        {
+          height: `${targetHeight}px`,
+          marginTop: shouldExpand ? '14px' : '0px',
+          opacity: shouldExpand ? 1 : 0,
+          transform: shouldExpand ? 'translateY(0)' : 'translateY(-8px)'
+        }
+      ], {
+        duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 520,
+        easing: 'cubic-bezier(0.22, 1, 0.36, 1)'
       });
 
-      card.addEventListener('click', () => openLightbox(src, imgEl.alt));
+      animation.onfinish = () => {
+        panel.style.height = shouldExpand ? 'auto' : '0px';
+        panel.style.marginTop = shouldExpand ? '14px' : '0px';
+        panel.style.opacity = shouldExpand ? '1' : '0';
+        panel.style.transform = shouldExpand ? 'translateY(0)' : 'translateY(-8px)';
 
-      const meta = document.createElement('div');
-      meta.className = 'gallery-card-content';
-      meta.innerHTML = `<h3>Thumbnail ${String(index + 1).padStart(2, '0')}</h3><p>${String(index + 1).padStart(2, '0')}</p>`;
-
-      card.appendChild(imgEl);
-      card.appendChild(meta);
-      galleryGrid.appendChild(card);
+        if (!shouldExpand) panel.setAttribute('aria-hidden', 'true');
+      };
     });
-  }
+  });
 
   const revealItems = document.querySelectorAll('.reveal');
 
@@ -130,53 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.14 });
 
   revealItems.forEach(item => observer.observe(item));
-
-  // Embed YouTube player when the video card is visible (autoplay muted)
-  const videoId = 'PYwCRETBzQU'; // fallback
-  const iframe = document.getElementById('yt-embed');
-  const videoContainer = document.getElementById('youtube-video-container');
-
-  if (iframe && videoContainer) {
-    const dataSrc = iframe.dataset && iframe.dataset.src ? iframe.dataset.src : null;
-    const makeSrcFromBase = (base) => {
-      // iv_load_policy=3 attempts to hide annotations/cards where supported
-      // playsinline=1 keeps playback inline on mobile
-      if (!base) return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`;
-      const sep = base.includes('?') ? '&' : '?';
-      return `${base}${sep}autoplay=1&mute=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1`;
-    };
-
-    const loadVideo = () => {
-      if (!iframe.src) {
-        iframe.src = makeSrcFromBase(dataSrc);
-        console.log('YouTube iframe src set ->', iframe.src);
-      }
-    };
-
-    const unloadVideo = () => {
-      if (iframe.src) {
-        iframe.src = '';
-        console.log('YouTube iframe src cleared');
-      }
-    };
-
-    const vidObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadVideo();
-        } else {
-          unloadVideo();
-        }
-      });
-    }, { threshold: 0.25 });
-
-    // If the video container is already visible on load, load immediately
-    const rect = videoContainer.getBoundingClientRect();
-    const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    if (rect.top < vh && rect.bottom > 0) {
-      loadVideo();
-    }
-
-    vidObserver.observe(videoContainer);
-  }
 });
